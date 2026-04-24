@@ -1,0 +1,6 @@
+{
+  "scope": "x_snc_quarterly_ga",
+  "scopeId": "efda5a043320c3d4635072570e5c7b92",
+  "name": "Quarterly Gap to Plan Monitor",
+  "tsconfigPath": "./src/server/tsconfig.json"
+}

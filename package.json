@@ -1,0 +1,19 @@
+{
+    "name": "x-snc-quarterly-gap-to-plan-monitor",
+    "version": "1.0.0",
+    "description": "[BUILD AGENT GENERATED]:  An application to monitor the gap to plan across all 4 quarters of the year. Allows creating opportunities per quarter with account, opportunity details, sales/forecast stages, amounts, risk, and weekly notes. Provides quarterly tracking of Target, Gap Carryover, New Target, Total Pillar BUILD, % BUILD to New Target, Build to Target Gap, Total Pillar UPSIDE, and Variance to Gap.",
+    "license": "UNLICENSED",
+    "imports": {
+        "#now:*": "./@types/servicenow/fluent/*/index.js"
+    },
+    "scripts": {
+        "build": "now-sdk build",
+        "deploy": "now-sdk install",
+        "transform": "now-sdk transform",
+        "types": "now-sdk dependencies"
+    },
+    "devDependencies": {
+        "@servicenow/sdk": "4.6.0",
+        "@servicenow/glide": "27.0.5"
+    }
+}
