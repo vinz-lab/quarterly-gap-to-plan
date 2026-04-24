@@ -13,6 +13,26 @@ declare global {
                         table: 'sys_module'
                         id: '7a51219fbae5420a96d37d716cc64cd4'
                     }
+                    chart_by_forecast: {
+                        table: 'par_dashboard_widget'
+                        id: 'bf54194fce094720b81596bd1b975b0a'
+                    }
+                    chart_by_risk: {
+                        table: 'par_dashboard_widget'
+                        id: '97a5bf7e33fa4f488f34bc2e8a3a28cb'
+                    }
+                    chart_by_stage: {
+                        table: 'par_dashboard_widget'
+                        id: '7959f06658aa49e99be52220a910f8a6'
+                    }
+                    chart_target_vs_build: {
+                        table: 'par_dashboard_widget'
+                        id: '3993bbd99a724152bde9d68849f6ed60'
+                    }
+                    chart_variance: {
+                        table: 'par_dashboard_widget'
+                        id: '98e81edfebbd4edaaeca2889f2d85bc9'
+                    }
                     create_quarter_module: {
                         table: 'sys_app_module'
                         id: '390e55a6a218422e91b7a621fe1663f1'
@@ -20,6 +40,114 @@ declare global {
                     create_quarter_tracking_module: {
                         table: 'sys_app_module'
                         id: 'ee495c0c4a5b4bdb83bb27aebd64add4'
+                    }
+                    gap_analysis_applicability: {
+                        table: 'sys_ux_applicability'
+                        id: 'fbcac8cd6ea6400aa779b893af350652'
+                    }
+                    gap_analysis_dashboard: {
+                        table: 'par_dashboard'
+                        id: '86093c5001d6447fb18ec7e45ae88dc0'
+                    }
+                    gap_analysis_list_config: {
+                        table: 'sys_ux_list_menu_config'
+                        id: 'e11fe3e378764476996ed4fc8c7e92b0'
+                    }
+                    gap_analysis_workspace: {
+                        table: 'sys_ux_page_registry'
+                        id: '3ae70ef6c349422e93a27407b872b4d2'
+                    }
+                    gap_analysis_workspace_acl: {
+                        table: 'sys_security_acl'
+                        id: '205ad7631ec943488ffc9f52ec5dbcfe'
+                    }
+                    gap_analysis_workspace_sys_ux_app_config_workspace: {
+                        table: 'sys_ux_app_config'
+                        id: 'd06a05604f584249a341c81f1502ca20'
+                    }
+                    gap_analysis_workspace_sys_ux_app_route_home: {
+                        table: 'sys_ux_app_route'
+                        id: 'd7370855dcc844f69a21051baeaa9eb1'
+                    }
+                    gap_analysis_workspace_sys_ux_app_route_list: {
+                        table: 'sys_ux_app_route'
+                        id: '2afdd709af9f47edbe6145061e704a38'
+                    }
+                    gap_analysis_workspace_sys_ux_app_route_record: {
+                        table: 'sys_ux_app_route'
+                        id: '32ab1cc2ad494d00bf7eb294712b4739'
+                    }
+                    'gap_analysis_workspace_sys_ux_app_route_simple-list': {
+                        table: 'sys_ux_app_route'
+                        id: '6f87377a16a64fa0bb803a2ee08a35de'
+                    }
+                    gap_analysis_workspace_sys_ux_macroponent_record: {
+                        table: 'sys_ux_macroponent'
+                        id: 'af0794adbb334289bcbfaa6cc35e0d28'
+                    }
+                    gap_analysis_workspace_sys_ux_page_property_chrome_footer: {
+                        table: 'sys_ux_page_property'
+                        id: '664b69bf7b1b44c8a33b9e6f0d00ca6d'
+                    }
+                    gap_analysis_workspace_sys_ux_page_property_chrome_header: {
+                        table: 'sys_ux_page_property'
+                        id: 'f6aac7b0cc0740b082fe70c600a72121'
+                    }
+                    gap_analysis_workspace_sys_ux_page_property_chrome_tab: {
+                        table: 'sys_ux_page_property'
+                        id: '40845d7459ec4802ba0bf1223e321126'
+                    }
+                    gap_analysis_workspace_sys_ux_page_property_chrome_toolbar: {
+                        table: 'sys_ux_page_property'
+                        id: 'b11c28a2ae294a79b4c7d90b899d794e'
+                    }
+                    gap_analysis_workspace_sys_ux_page_property_listConfigId: {
+                        table: 'sys_ux_page_property'
+                        id: 'a7928b654b7d4c2d836adabb40400b64'
+                    }
+                    gap_analysis_workspace_sys_ux_page_property_view: {
+                        table: 'sys_ux_page_property'
+                        id: 'e4036142a9a24268bc3c246ab6dfb5b1'
+                    }
+                    gap_analysis_workspace_sys_ux_page_property_wbApplicabilityConfigId: {
+                        table: 'sys_ux_page_property'
+                        id: 'b854b8c79b6347b38bd37fadbef77f36'
+                    }
+                    gap_analysis_workspace_sys_ux_registry_m2m_category_unifiedNav: {
+                        table: 'sys_ux_registry_m2m_category'
+                        id: '584ae09637cb494b841c25b36a324a0b'
+                    }
+                    gap_analysis_workspace_sys_ux_screen_home: {
+                        table: 'sys_ux_screen'
+                        id: 'faf705be414f48ecba25a7310e45abcb'
+                    }
+                    gap_analysis_workspace_sys_ux_screen_list: {
+                        table: 'sys_ux_screen'
+                        id: '69c57e4c830649c992edfa8594112eed'
+                    }
+                    gap_analysis_workspace_sys_ux_screen_record: {
+                        table: 'sys_ux_screen'
+                        id: 'b5f9f159670941e696b78b9a61fc1351'
+                    }
+                    'gap_analysis_workspace_sys_ux_screen_simple-list': {
+                        table: 'sys_ux_screen'
+                        id: '246a2533fa394d7a8a9ab9db2e83a97e'
+                    }
+                    gap_analysis_workspace_sys_ux_screen_type_home: {
+                        table: 'sys_ux_screen_type'
+                        id: '3aa48cdb17e64290911f5dca4408bb88'
+                    }
+                    gap_analysis_workspace_sys_ux_screen_type_list: {
+                        table: 'sys_ux_screen_type'
+                        id: '526df10b55264e169cfc095633ee2a2b'
+                    }
+                    gap_analysis_workspace_sys_ux_screen_type_record: {
+                        table: 'sys_ux_screen_type'
+                        id: '1d68cc2957f44b618f8bcf8f3c997a90'
+                    }
+                    'gap_analysis_workspace_sys_ux_screen_type_simple-list': {
+                        table: 'sys_ux_screen_type'
+                        id: 'b3cc0b16a3684ec3a1a9a677d10c4667'
                     }
                     gap_to_plan_category: {
                         table: 'sys_app_category'
@@ -29,6 +157,50 @@ declare global {
                         table: 'sys_app_application'
                         id: '9cc4a2d02bd74f598e78cd7dc50931de'
                     }
+                    kpi_avg_deal: {
+                        table: 'par_dashboard_widget'
+                        id: '0311a1b46d1b42e783afdee6bb7a21d8'
+                    }
+                    kpi_high_risk: {
+                        table: 'par_dashboard_widget'
+                        id: '66be5acd76c14b45b02fec22f9d3db63'
+                    }
+                    kpi_total_amount: {
+                        table: 'par_dashboard_widget'
+                        id: '1fccf2c19db24ca78988d39e55e7b6b4'
+                    }
+                    kpi_total_opportunities: {
+                        table: 'par_dashboard_widget'
+                        id: '0280826ea0f2449296b9efb04218d766'
+                    }
+                    opportunities_all_applicability: {
+                        table: 'sys_ux_applicability_m2m_list'
+                        id: 'f6fc3c7a3caf400d810651058fb61515'
+                    }
+                    opportunities_all_list: {
+                        table: 'sys_ux_list'
+                        id: 'd9af9f0582e940ff971b237b89fe33b2'
+                    }
+                    opportunities_by_owner_applicability: {
+                        table: 'sys_ux_applicability_m2m_list'
+                        id: '15a9d5892de847de8d60920034052d5f'
+                    }
+                    opportunities_by_owner_list: {
+                        table: 'sys_ux_list'
+                        id: '564a971fe3fa4373a9257ea7dd1163ce'
+                    }
+                    opportunities_category: {
+                        table: 'sys_ux_list_category'
+                        id: '9993aacab48f45d8b5b57833391f810d'
+                    }
+                    opportunities_high_risk_applicability: {
+                        table: 'sys_ux_applicability_m2m_list'
+                        id: 'da1657b05d604256b4dc5d411b3ae6f1'
+                    }
+                    opportunities_high_risk_list: {
+                        table: 'sys_ux_list'
+                        id: '4f84d268697749dea0e3560036efc669'
+                    }
                     opportunities_list_module: {
                         table: 'sys_app_module'
                         id: '0ac54c5b04fe476695a8c0ea1d6d01df'
@@ -37,13 +209,65 @@ declare global {
                         table: 'sys_app_module'
                         id: 'd1a1f3fc64f14ee290ebc94a6c6b0b7e'
                     }
+                    overview_heading: {
+                        table: 'par_dashboard_widget'
+                        id: '0de912c0392446eda370e628a8b29446'
+                    }
+                    overview_tab: {
+                        table: 'par_dashboard_tab'
+                        id: '20be4ddaddee4d38b6935fec47c4a2a4'
+                    }
                     package_json: {
                         table: 'sys_module'
                         id: '3c32f83dd09d42f1b2b40fccc40a0209'
                     }
+                    qoq_heading: {
+                        table: 'par_dashboard_widget'
+                        id: '859901e6ad3a46d9b96d3b9b16719b6e'
+                    }
+                    quarter_tracking_all_applicability: {
+                        table: 'sys_ux_applicability_m2m_list'
+                        id: '5db18906bee744518fcb11e26ec83d6a'
+                    }
+                    quarter_tracking_all_list: {
+                        table: 'sys_ux_list'
+                        id: '4ccb9b4c4c9c431cb3b08c74bb52c5a9'
+                    }
+                    quarter_tracking_category: {
+                        table: 'sys_ux_list_category'
+                        id: 'bb7598e828574f7e886084bab7710f05'
+                    }
+                    quarter_tracking_gap_applicability: {
+                        table: 'sys_ux_applicability_m2m_list'
+                        id: '32a156bf926a4e06a064f61bf4205745'
+                    }
+                    quarter_tracking_gap_list: {
+                        table: 'sys_ux_list'
+                        id: 'fa4840fb03174803b23b8f172204a9f9'
+                    }
                     quarter_tracking_list_module: {
                         table: 'sys_app_module'
                         id: '90bbc3f8262a4fddae6f32af311ef0b2'
+                    }
+                    quarters_active_applicability: {
+                        table: 'sys_ux_applicability_m2m_list'
+                        id: '21788e3ea8a745508d2b349f4463273f'
+                    }
+                    quarters_active_list: {
+                        table: 'sys_ux_list'
+                        id: '85cd835184ff4ec28609773857225581'
+                    }
+                    quarters_all_applicability: {
+                        table: 'sys_ux_applicability_m2m_list'
+                        id: '3ad9871cce2f460fba163362697754ef'
+                    }
+                    quarters_all_list: {
+                        table: 'sys_ux_list'
+                        id: '725907ce9df943b5a6a32a273c03e42a'
+                    }
+                    quarters_category: {
+                        table: 'sys_ux_list_category'
+                        id: '8298c0b78f234154850a1ec9435ed3a1'
                     }
                     quarters_list_module: {
                         table: 'sys_app_module'
@@ -53,12 +277,59 @@ declare global {
                         table: 'sys_module'
                         id: 'dc82ebc4968e4f869ac0d6f6ed7c2683'
                     }
+                    tracking_heading: {
+                        table: 'par_dashboard_widget'
+                        id: 'cb45cef1c26c4bbb9ed8835729d1d041'
+                    }
                     tracking_separator: {
                         table: 'sys_app_module'
                         id: '6481e9d308f342318f37b3539dedab12'
                     }
+                    tracking_trend_heading: {
+                        table: 'par_dashboard_widget'
+                        id: '3956c483f00d4b2e90a712e414d4cb03'
+                    }
+                    trend_build_pct: {
+                        table: 'par_dashboard_widget'
+                        id: 'e8bf44930cf94c9c88b025e0bfc7da3d'
+                    }
+                    trend_deal_size: {
+                        table: 'par_dashboard_widget'
+                        id: '92b2e4de5ef34202ae9325688c62f2cf'
+                    }
+                    trend_opty_creation: {
+                        table: 'par_dashboard_widget'
+                        id: 'c76584c1f91f4b2898a11604fdc556e6'
+                    }
+                    trend_risk_distribution: {
+                        table: 'par_dashboard_widget'
+                        id: 'c0dc747367394d7e970a2967dc67be99'
+                    }
+                    trend_stage_distribution: {
+                        table: 'par_dashboard_widget'
+                        id: '0a558a9c829f4be285993857569632c9'
+                    }
+                    trend_variance_gap: {
+                        table: 'par_dashboard_widget'
+                        id: '8b6e7af4fd9f451bb22ff708e15a20d2'
+                    }
+                    trends_heading: {
+                        table: 'par_dashboard_widget'
+                        id: '58bf797f84ab43f5a7cafea208d183f6'
+                    }
+                    trends_tab: {
+                        table: 'par_dashboard_tab'
+                        id: '81699b11a69b4046adba7b612d97f511'
+                    }
                 }
                 composite: [
+                    {
+                        table: 'sys_user_role'
+                        id: '0634bc3b830e47c7b96df2069744f066'
+                        key: {
+                            name: 'x_snc_quarterly_ga.user'
+                        }
+                    },
                     {
                         table: 'sys_dictionary'
                         id: '0b8618f4af0644b88a84c1226bdee3e8'
@@ -74,6 +345,19 @@ declare global {
                             name: 'sn_opty_mgmt_core_opportunity'
                             element: 'x_snc_quarterly_ga_risk'
                             value: 'critical'
+                        }
+                    },
+                    {
+                        table: 'sys_security_acl_role'
+                        id: '0f39e31944e4403ca123b4f2f1a32ab6'
+                        key: {
+                            sys_security_acl: '205ad7631ec943488ffc9f52ec5dbcfe'
+                            sys_user_role: {
+                                id: 'c4cbd92939a947de8357689ec9eeb1b2'
+                                key: {
+                                    name: 'x_snc_quarterly_ga.admin'
+                                }
+                            }
                         }
                     },
                     {
@@ -181,6 +465,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'par_dashboard_canvas'
+                        id: '4d96cd5938c744f38c92e23c9cba5123'
+                        key: {
+                            dashboard: '86093c5001d6447fb18ec7e45ae88dc0'
+                            dashboard_tab: '20be4ddaddee4d38b6935fec47c4a2a4'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '533b3b69e6ec496bac8f7e341a1e69dc'
                         key: {
@@ -194,6 +486,14 @@ declare global {
                         key: {
                             name: 'x_snc_quarterly_ga_quarter_tracking'
                             element: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'par_dashboard_visibility'
+                        id: '5999f00feac345889096384e8d3bbf9f'
+                        key: {
+                            dashboard: '86093c5001d6447fb18ec7e45ae88dc0'
+                            experience: '3ae70ef6c349422e93a27407b872b4d2'
                         }
                     },
                     {
@@ -234,6 +534,24 @@ declare global {
                         key: {
                             name: 'sn_opty_mgmt_core_opportunity'
                             element: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_user_role_contains'
+                        id: '65ee5a5ba1bf466490e8a17796df4729'
+                        key: {
+                            role: {
+                                id: '0634bc3b830e47c7b96df2069744f066'
+                                key: {
+                                    name: 'x_snc_quarterly_ga.user'
+                                }
+                            }
+                            contains: {
+                                id: 'aff1df3b9370443eba3590d58700d6f0'
+                                key: {
+                                    name: 'canvas_user'
+                                }
+                            }
                         }
                     },
                     {
@@ -386,6 +704,24 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_user_role_contains'
+                        id: 'afcc830645754739ad570cd10b7f002d'
+                        key: {
+                            role: {
+                                id: 'c4cbd92939a947de8357689ec9eeb1b2'
+                                key: {
+                                    name: 'x_snc_quarterly_ga.admin'
+                                }
+                            }
+                            contains: {
+                                id: '2af6cb1240a64a448a6a14690267c840'
+                                key: {
+                                    name: 'canvas_admin'
+                                }
+                            }
+                        }
+                    },
+                    {
                         table: 'sys_db_object'
                         id: 'b15cab0b7beb42389de5ac4b4a141041'
                         key: {
@@ -445,6 +781,13 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_user_role'
+                        id: 'c4cbd92939a947de8357689ec9eeb1b2'
+                        key: {
+                            name: 'x_snc_quarterly_ga.admin'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'ccbece0c6a414a3c8963d3ef00d7c8fc'
                         key: {
@@ -470,6 +813,19 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_security_acl_role'
+                        id: 'e3891aab53bb42f88f2195dc6404b59c'
+                        key: {
+                            sys_security_acl: '205ad7631ec943488ffc9f52ec5dbcfe'
+                            sys_user_role: {
+                                id: '0634bc3b830e47c7b96df2069744f066'
+                                key: {
+                                    name: 'x_snc_quarterly_ga.user'
+                                }
+                            }
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'e45975a311a947c89bb52a298fa15a90'
                         key: {
@@ -483,6 +839,14 @@ declare global {
                         key: {
                             name: 'x_snc_quarterly_ga_quarter'
                             element: 'name'
+                        }
+                    },
+                    {
+                        table: 'par_dashboard_canvas'
+                        id: 'e848650ae50c4104a7b7cd29cb86f405'
+                        key: {
+                            dashboard: '86093c5001d6447fb18ec7e45ae88dc0'
+                            dashboard_tab: '81699b11a69b4046adba7b612d97f511'
                         }
                     },
                     {
