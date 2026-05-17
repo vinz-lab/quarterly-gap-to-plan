@@ -13,6 +13,10 @@ declare global {
                         table: 'sys_module'
                         id: '7a51219fbae5420a96d37d716cc64cd4'
                     }
+                    cascade_carryover_br: {
+                        table: 'sys_script'
+                        id: '6a5207820df0419c9b800e074e588f2a'
+                    }
                     chart_by_forecast: {
                         table: 'par_dashboard_widget'
                         id: 'bf54194fce094720b81596bd1b975b0a'
@@ -277,6 +281,18 @@ declare global {
                         table: 'sys_module'
                         id: 'dc82ebc4968e4f869ac0d6f6ed7c2683'
                     }
+                    src_server_cascadeCarryover_js: {
+                        table: 'sys_module'
+                        id: 'c37c1ca89c334a999908c1ebd076aefd'
+                    }
+                    src_server_syncQuarterTrackingFromOpportunity_js: {
+                        table: 'sys_module'
+                        id: 'e0c3dbf940454993ba966a1d3b63c18b'
+                    }
+                    sync_opty_to_tracking_br: {
+                        table: 'sys_script'
+                        id: '90c16cda16a2459d92ed99c55920c6d9'
+                    }
                     tracking_heading: {
                         table: 'par_dashboard_widget'
                         id: 'cb45cef1c26c4bbb9ed8835729d1d041'
@@ -321,6 +337,10 @@ declare global {
                         table: 'par_dashboard_tab'
                         id: '81699b11a69b4046adba7b612d97f511'
                     }
+                    xsp_read_opportunity: {
+                        table: 'sys_scope_privilege'
+                        id: '9e9c26c0170f4d0ea542c6da5c1b54a8'
+                    }
                 }
                 composite: [
                     {
@@ -358,6 +378,15 @@ declare global {
                                     name: 'x_snc_quarterly_ga.admin'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '0f9f27a1741b42fc830d2dd106b40432'
+                        key: {
+                            name: 'sn_opty_mgmt_core_opportunity'
+                            element: 'x_snc_quarterly_ga_nnacv'
+                            language: 'en'
                         }
                     },
                     {
@@ -580,6 +609,15 @@ declare global {
                     },
                     {
                         table: 'sys_documentation'
+                        id: '6aa5de8307a9497f8e9d24722dd10b8b'
+                        key: {
+                            name: 'x_snc_quarterly_ga_quarter_tracking'
+                            element: 'total_upside'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
                         id: '6d17697b48ab4889be6c1b6427894433'
                         key: {
                             name: 'x_snc_quarterly_ga_quarter'
@@ -592,6 +630,14 @@ declare global {
                         id: '702a7a27036b4339bcddc2946ad2834f'
                         key: {
                             name: 'sn_opty_mgmt_core_opportunity'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '74f8cc57eba748e69210424ac337b1b4'
+                        key: {
+                            name: 'sn_opty_mgmt_core_opportunity'
+                            element: 'x_snc_quarterly_ga_is_pillar'
                         }
                     },
                     {
@@ -616,6 +662,15 @@ declare global {
                         key: {
                             name: 'x_snc_quarterly_ga_quarter'
                             element: 'active'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '81e80adb58534aed80b5843a832f4fd7'
+                        key: {
+                            name: 'x_snc_quarterly_ga_quarter_tracking'
+                            element: 'target_coverage_pct'
+                            language: 'en'
                         }
                     },
                     {
@@ -796,6 +851,22 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: 'ce18e0549b274d0d8f9b46d429ee83ab'
+                        key: {
+                            name: 'x_snc_quarterly_ga_quarter_tracking'
+                            element: 'total_upside'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'd04f7532071e434695d45ed8d5812d9d'
+                        key: {
+                            name: 'sn_opty_mgmt_core_opportunity'
+                            element: 'x_snc_quarterly_ga_nnacv'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: 'd8509874d9164d92b15f81ae20df2e59'
                         key: {
@@ -810,6 +881,14 @@ declare global {
                         key: {
                             name: 'x_snc_quarterly_ga_quarter_tracking'
                             element: 'build_to_target_gap'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'ded02085ec9d4791b8cb0f30caf08905'
+                        key: {
+                            name: 'x_snc_quarterly_ga_quarter_tracking'
+                            element: 'target_coverage_pct'
                         }
                     },
                     {
@@ -855,6 +934,15 @@ declare global {
                         key: {
                             name: 'x_snc_quarterly_ga_quarter_tracking'
                             element: 'total_pillar_upside'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'ec9f884c1890437993adb7db1494ff0f'
+                        key: {
+                            name: 'sn_opty_mgmt_core_opportunity'
+                            element: 'x_snc_quarterly_ga_is_pillar'
+                            language: 'en'
                         }
                     },
                     {

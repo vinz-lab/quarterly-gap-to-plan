@@ -25,6 +25,7 @@ export const x_snc_quarterly_ga_quarter_tracking = Table({
     gap_carryover: DecimalColumn({
       label: "Gap Carryover",
       default: 0,
+      read_only: true,
     }),
     new_target: DecimalColumn({
       label: "New Target",
@@ -33,6 +34,7 @@ export const x_snc_quarterly_ga_quarter_tracking = Table({
     total_pillar_build: DecimalColumn({
       label: "Total Pillar BUILD",
       default: 0,
+      read_only: true,
     }),
     pct_build_to_new_target: FloatColumn({
       label: "% BUILD to New Target",
@@ -46,10 +48,21 @@ export const x_snc_quarterly_ga_quarter_tracking = Table({
     total_pillar_upside: DecimalColumn({
       label: "Total Pillar UPSIDE",
       default: 0,
+      read_only: true,
+    }),
+    total_upside: DecimalColumn({
+      label: "Total UPSIDE",
+      default: 0,
+      read_only: true,
     }),
     variance_to_gap: DecimalColumn({
       label: "Variance to Gap",
       read_only: true,
+    }),
+    target_coverage_pct: FloatColumn({
+      label: "% Target Coverage",
+      read_only: true,
+      scale: 2,
     }),
     notes: StringColumn({
       label: "Notes",

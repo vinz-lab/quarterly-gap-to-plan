@@ -21,6 +21,5 @@ Acl({
   type: "ux_route",
   operation: "read",
   roles: ["x_snc_quarterly_ga.user", "x_snc_quarterly_ga.admin"],
-  table: "now",
-  field: "gap-analysis.*",
+  name: "now.gap-analysis.*",
 });

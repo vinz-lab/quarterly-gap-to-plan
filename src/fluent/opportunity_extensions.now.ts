@@ -1,4 +1,10 @@
-import { Table, ReferenceColumn, ChoiceColumn } from "@servicenow/sdk/core";
+import {
+  Table,
+  ReferenceColumn,
+  ChoiceColumn,
+  BooleanColumn,
+  DecimalColumn,
+} from "@servicenow/sdk/core";
 
 // Add cross-scope columns to the existing CRM Sales Opportunity table
 export const sn_opty_mgmt_core_opportunity = Table({
@@ -17,6 +23,13 @@ export const sn_opty_mgmt_core_opportunity = Table({
         high: { label: "High", sequence: 2 },
         critical: { label: "Critical", sequence: 3 },
       },
+    }),
+    x_snc_quarterly_ga_nnacv: DecimalColumn({
+      label: "NNACV",
+    }),
+    x_snc_quarterly_ga_is_pillar: BooleanColumn({
+      label: "Pillar UPSIDE",
+      default: false,
     }),
   },
 });
