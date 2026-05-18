@@ -10,3 +10,16 @@ export const readOpportunityPrivilege = CrossScopePrivilege({
   targetName: "sn_opty_mgmt_core_opportunity",
   targetScope: "sn_opty_mgmt_core",
 });
+
+// Required so the assign-quarter BR can setValue() on the Opportunity row.
+// Requires that the target table's caller_access has also been loosened on
+// the instance — both sides must permit the write.
+export const writeOpportunityPrivilege = CrossScopePrivilege({
+  $id: Now.ID["xsp_write_opportunity"],
+  operation: "write",
+  status: "allowed",
+  targetType: "sys_db_object",
+  targetName: "sn_opty_mgmt_core_opportunity",
+  targetScope: "sn_opty_mgmt_core",
+});
+

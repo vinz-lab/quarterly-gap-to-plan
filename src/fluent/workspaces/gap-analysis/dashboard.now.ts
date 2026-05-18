@@ -289,90 +289,157 @@ Dashboard({
           position: { x: 0, y: 32 },
         },
 
-        // Chart 4: Target vs BUILD by Quarter
+        // --- Current quarter (active=true) — 6 KPIs in 3x2 grid ---
+        // Row 1: Target | Total Pillar BUILD | Total Pillar UPSIDE
         {
-          $id: Now.ID["chart_target_vs_build"],
-          component: "vertical-bar",
+          $id: Now.ID["kpi_current_target"],
+          component: "single-score",
           componentProps: {
             dataSources: [
               {
                 label: "Quarter Tracking",
                 sourceType: "table",
                 tableOrViewName: "x_snc_quarterly_ga_quarter_tracking",
-                filterQuery: "",
-                id: "ds_qtrk_build",
+                filterQuery: "quarter.active=true",
+                id: "ds_qtrk_current_target",
               },
             ],
-            headerTitle: "Total Pillar BUILD by Quarter",
+            headerTitle: "Target",
             metrics: [
               {
-                dataSource: "ds_qtrk_build",
-                id: "metric_pillar_build",
+                dataSource: "ds_qtrk_current_target",
+                id: "metric_current_target",
+                aggregateFunction: "SUM",
+                aggregateField: "target",
+                axisId: "primary",
+              },
+            ],
+            sortBy: "value",
+          },
+          height: 12,
+          width: 16,
+          position: { x: 0, y: 36 },
+        },
+
+        {
+          $id: Now.ID["kpi_current_pillar_build"],
+          component: "single-score",
+          componentProps: {
+            dataSources: [
+              {
+                label: "Quarter Tracking",
+                sourceType: "table",
+                tableOrViewName: "x_snc_quarterly_ga_quarter_tracking",
+                filterQuery: "quarter.active=true",
+                id: "ds_qtrk_current_build",
+              },
+            ],
+            headerTitle: "Total Pillar BUILD",
+            metrics: [
+              {
+                dataSource: "ds_qtrk_current_build",
+                id: "metric_current_build",
                 aggregateFunction: "SUM",
                 aggregateField: "total_pillar_build",
                 axisId: "primary",
               },
             ],
-            groupBy: [
-              {
-                groupBy: [
-                  {
-                    dataSource: "ds_qtrk_build",
-                    groupByField: "quarter",
-                  },
-                ],
-                maxNumberOfGroups: 8,
-                showOthers: false,
-              },
-            ],
-            sortBy: "label",
+            sortBy: "value",
           },
-          height: 16,
-          width: 24,
-          position: { x: 0, y: 36 },
+          height: 12,
+          width: 16,
+          position: { x: 16, y: 36 },
         },
 
-        // Chart 5: Variance to Gap by Quarter
         {
-          $id: Now.ID["chart_variance"],
-          component: "vertical-bar",
+          $id: Now.ID["kpi_current_pillar_upside"],
+          component: "single-score",
           componentProps: {
             dataSources: [
               {
                 label: "Quarter Tracking",
                 sourceType: "table",
                 tableOrViewName: "x_snc_quarterly_ga_quarter_tracking",
-                filterQuery: "",
-                id: "ds_qtrk_variance",
+                filterQuery: "quarter.active=true",
+                id: "ds_qtrk_current_pillar_upside",
               },
             ],
-            headerTitle: "Variance to Gap by Quarter",
+            headerTitle: "Total Pillar UPSIDE",
             metrics: [
               {
-                dataSource: "ds_qtrk_variance",
-                id: "metric_variance",
+                dataSource: "ds_qtrk_current_pillar_upside",
+                id: "metric_current_pillar_upside",
                 aggregateFunction: "SUM",
-                aggregateField: "variance_to_gap",
+                aggregateField: "total_pillar_upside",
                 axisId: "primary",
               },
             ],
-            groupBy: [
+            sortBy: "value",
+          },
+          height: 12,
+          width: 16,
+          position: { x: 32, y: 36 },
+        },
+
+        // Row 2: % BUILD to New Target | % Target Coverage (width 24 each)
+        {
+          $id: Now.ID["kpi_current_pct_build"],
+          component: "single-score",
+          componentProps: {
+            dataSources: [
               {
-                groupBy: [
-                  {
-                    dataSource: "ds_qtrk_variance",
-                    groupByField: "quarter",
-                  },
-                ],
-                maxNumberOfGroups: 8,
-                showOthers: false,
+                label: "Quarter Tracking",
+                sourceType: "table",
+                tableOrViewName: "x_snc_quarterly_ga_quarter_tracking",
+                filterQuery: "quarter.active=true",
+                id: "ds_qtrk_current_pct",
               },
             ],
-            sortBy: "label",
+            headerTitle: "% BUILD to New Target",
+            metrics: [
+              {
+                dataSource: "ds_qtrk_current_pct",
+                id: "metric_current_pct",
+                aggregateFunction: "AVG",
+                aggregateField: "pct_build_to_new_target",
+                axisId: "primary",
+              },
+            ],
+            sortBy: "value",
           },
-          height: 16,
+          height: 12,
           width: 24,
-          position: { x: 24, y: 36 },
+          position: { x: 0, y: 48 },
+        },
+
+        {
+          $id: Now.ID["kpi_current_target_coverage"],
+          component: "single-score",
+          componentProps: {
+            dataSources: [
+              {
+                label: "Quarter Tracking",
+                sourceType: "table",
+                tableOrViewName: "x_snc_quarterly_ga_quarter_tracking",
+                filterQuery: "quarter.active=true",
+                id: "ds_qtrk_current_coverage",
+              },
+            ],
+            headerTitle: "% Target Coverage",
+            metrics: [
+              {
+                dataSource: "ds_qtrk_current_coverage",
+                id: "metric_current_coverage",
+                aggregateFunction: "AVG",
+                aggregateField: "target_coverage_pct",
+                axisId: "primary",
+              },
+            ],
+            sortBy: "value",
+          },
+          height: 12,
+          width: 24,
+          position: { x: 24, y: 48 },
         },
       ],
     },

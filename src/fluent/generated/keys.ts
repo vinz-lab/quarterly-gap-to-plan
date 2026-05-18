@@ -9,6 +9,11 @@ declare global {
                         table: 'sys_script'
                         id: '0eb9b20ff05d4a959da699dafd4c638e'
                     }
+                    assign_opty_quarter_br: {
+                        table: 'sys_script'
+                        id: '79789296c61d4c0393b7322309075b79'
+                        deleted: false
+                    }
                     bom_json: {
                         table: 'sys_module'
                         id: '7a51219fbae5420a96d37d716cc64cd4'
@@ -16,6 +21,7 @@ declare global {
                     cascade_carryover_br: {
                         table: 'sys_script'
                         id: '6a5207820df0419c9b800e074e588f2a'
+                        deleted: true
                     }
                     chart_by_forecast: {
                         table: 'par_dashboard_widget'
@@ -29,13 +35,20 @@ declare global {
                         table: 'par_dashboard_widget'
                         id: '7959f06658aa49e99be52220a910f8a6'
                     }
+                    chart_remaining_pillars: {
+                        table: 'par_dashboard_widget'
+                        id: '05c3f3086ff34ea78b1c0c58c19598a7'
+                        deleted: true
+                    }
                     chart_target_vs_build: {
                         table: 'par_dashboard_widget'
                         id: '3993bbd99a724152bde9d68849f6ed60'
+                        deleted: true
                     }
                     chart_variance: {
                         table: 'par_dashboard_widget'
                         id: '98e81edfebbd4edaaeca2889f2d85bc9'
+                        deleted: true
                     }
                     create_quarter_module: {
                         table: 'sys_app_module'
@@ -165,9 +178,44 @@ declare global {
                         table: 'par_dashboard_widget'
                         id: '0311a1b46d1b42e783afdee6bb7a21d8'
                     }
+                    kpi_current_pct_build: {
+                        table: 'par_dashboard_widget'
+                        id: 'bcfd386ff0e34518a2ce8050471cbea7'
+                    }
+                    kpi_current_pillar_build: {
+                        table: 'par_dashboard_widget'
+                        id: '1d4e07a928254013923b6c393ebeacca'
+                    }
+                    kpi_current_pillar_upside: {
+                        table: 'par_dashboard_widget'
+                        id: 'f06b3309dd24490c88da163fcf7a27c7'
+                    }
+                    kpi_current_target: {
+                        table: 'par_dashboard_widget'
+                        id: 'a33ad72bc59344e1a3782980c07af232'
+                    }
+                    kpi_current_target_coverage: {
+                        table: 'par_dashboard_widget'
+                        id: 'ad1599ba4ee94a38bb8003f17ae87427'
+                    }
+                    kpi_current_total_upside: {
+                        table: 'par_dashboard_widget'
+                        id: 'c901e0c623a5477fa4c2da6a20853e70'
+                        deleted: true
+                    }
                     kpi_high_risk: {
                         table: 'par_dashboard_widget'
                         id: '66be5acd76c14b45b02fec22f9d3db63'
+                    }
+                    kpi_remaining_pillar_build: {
+                        table: 'par_dashboard_widget'
+                        id: '024cf43b2e0a46b095b886d9c9a30184'
+                        deleted: true
+                    }
+                    kpi_remaining_pillar_upside: {
+                        table: 'par_dashboard_widget'
+                        id: '020e794834fe4fed99fc1cca3fa70d8a'
+                        deleted: true
                     }
                     kpi_total_amount: {
                         table: 'par_dashboard_widget'
@@ -176,6 +224,11 @@ declare global {
                     kpi_total_opportunities: {
                         table: 'par_dashboard_widget'
                         id: '0280826ea0f2449296b9efb04218d766'
+                    }
+                    maintain_current_fy_flag_br: {
+                        table: 'sys_script'
+                        id: '5b8a63afee7446588ad3d2532eff3a12'
+                        deleted: true
                     }
                     opportunities_all_applicability: {
                         table: 'sys_ux_applicability_m2m_list'
@@ -277,6 +330,19 @@ declare global {
                         table: 'sys_app_module'
                         id: '2a40ec233fed41679fcf83cf9866cd1d'
                     }
+                    recalc_all_tracking_ui_action: {
+                        table: 'sys_ui_action'
+                        id: '2efcd058505948ce8e49f8c363648ac3'
+                    }
+                    recalc_tracking_ui_action: {
+                        table: 'sys_ui_action'
+                        id: 'e35ad157199747f294c9762790adc293'
+                    }
+                    src_server_assignOpportunityQuarter_js: {
+                        table: 'sys_module'
+                        id: '1cfc03aa6ac941d2934352e7e36b62f8'
+                        deleted: false
+                    }
                     src_server_calculateQuarterTrackingMetrics_js: {
                         table: 'sys_module'
                         id: 'dc82ebc4968e4f869ac0d6f6ed7c2683'
@@ -284,6 +350,14 @@ declare global {
                     src_server_cascadeCarryover_js: {
                         table: 'sys_module'
                         id: 'c37c1ca89c334a999908c1ebd076aefd'
+                    }
+                    src_server_maintainCurrentFyFlag_js: {
+                        table: 'sys_module'
+                        id: 'fdb3fdf233ee46f2a34498fc92c113f3'
+                    }
+                    src_server_quarterUtils_js: {
+                        table: 'sys_module'
+                        id: '74069a9c6ccd4952b519e17cbc27fbdf'
                     }
                     src_server_syncQuarterTrackingFromOpportunity_js: {
                         table: 'sys_module'
@@ -340,6 +414,11 @@ declare global {
                     xsp_read_opportunity: {
                         table: 'sys_scope_privilege'
                         id: '9e9c26c0170f4d0ea542c6da5c1b54a8'
+                    }
+                    xsp_write_opportunity: {
+                        table: 'sys_scope_privilege'
+                        id: '515d98486185465fb630443fd8303f36'
+                        deleted: false
                     }
                 }
                 composite: [
@@ -566,6 +645,16 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '63bc470a0fb742ff9d5dad042b024f26'
+                        deleted: true
+                        key: {
+                            name: 'sn_opty_mgmt_core_opportunity'
+                            element: 'x_snc_quarterly_ga_is_pillar_build'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_user_role_contains'
                         id: '65ee5a5ba1bf466490e8a17796df4729'
                         key: {
@@ -610,6 +699,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: '6aa5de8307a9497f8e9d24722dd10b8b'
+                        deleted: true
                         key: {
                             name: 'x_snc_quarterly_ga_quarter_tracking'
                             element: 'total_upside'
@@ -622,6 +712,15 @@ declare global {
                         key: {
                             name: 'x_snc_quarterly_ga_quarter'
                             element: 'name'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '6f0e02e3904b4acf9638e4ef3a5f59ac'
+                        key: {
+                            name: 'x_snc_quarterly_ga_quarter'
+                            element: 'is_current_fy'
                             language: 'en'
                         }
                     },
@@ -836,6 +935,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: 'c3017920a10545eb9e6914aefbd695b8'
+                        key: {
+                            name: 'x_snc_quarterly_ga_quarter'
+                            element: 'is_current_fy'
+                        }
+                    },
+                    {
                         table: 'sys_user_role'
                         id: 'c4cbd92939a947de8357689ec9eeb1b2'
                         key: {
@@ -852,7 +959,17 @@ declare global {
                     },
                     {
                         table: 'sys_dictionary'
+                        id: 'cdc6f001266b4abdbbf5c53206722107'
+                        deleted: true
+                        key: {
+                            name: 'sn_opty_mgmt_core_opportunity'
+                            element: 'x_snc_quarterly_ga_is_pillar_build'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
                         id: 'ce18e0549b274d0d8f9b46d429ee83ab'
+                        deleted: true
                         key: {
                             name: 'x_snc_quarterly_ga_quarter_tracking'
                             element: 'total_upside'

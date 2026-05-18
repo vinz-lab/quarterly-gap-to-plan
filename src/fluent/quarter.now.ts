@@ -39,5 +39,9 @@ export const x_snc_quarterly_ga_quarter = Table({
       label: "Active",
       default: true,
     }),
+    is_current_fy: BooleanColumn({
+      label: "Is Current FY",
+      default: false,
+    }),
   },
 });

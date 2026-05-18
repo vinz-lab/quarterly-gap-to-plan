@@ -127,7 +127,7 @@ export const gapAnalysisListConfig = UxListMenuConfig({
           condition: "",
           table: "x_snc_quarterly_ga_quarter_tracking",
           columns:
-            "quarter,target,gap_carryover,new_target,total_pillar_build,total_pillar_upside,total_upside,pct_build_to_new_target,target_coverage_pct,build_to_target_gap,variance_to_gap",
+            "quarter,target,gap_carryover,new_target,total_pillar_build,total_pillar_upside,pct_build_to_new_target,target_coverage_pct,build_to_target_gap,variance_to_gap",
           applicabilities: [
             {
               $id: Now.ID["quarter_tracking_all_applicability"],
@@ -142,7 +142,7 @@ export const gapAnalysisListConfig = UxListMenuConfig({
           condition: "variance_to_gap<0^EQ",
           table: "x_snc_quarterly_ga_quarter_tracking",
           columns:
-            "quarter,target,new_target,total_pillar_build,total_pillar_upside,total_upside,build_to_target_gap,target_coverage_pct,variance_to_gap",
+            "quarter,target,new_target,total_pillar_build,total_pillar_upside,build_to_target_gap,target_coverage_pct,variance_to_gap",
           applicabilities: [
             {
               $id: Now.ID["quarter_tracking_gap_applicability"],

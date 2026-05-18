@@ -1,5 +1,10 @@
 import { Table, ReferenceColumn, DecimalColumn, FloatColumn, StringColumn } from "@servicenow/sdk/core";
 
+// NOTE: The derived columns below intentionally have read_only=false at the
+// dictionary level. In scoped Glide, setValue() against a read_only=true
+// column silently no-ops — that breaks the Calculate BR's writes. Editing
+// these fields on the UX form is prevented by form layout / a UI Policy,
+// not by the dictionary flag.
 export const x_snc_quarterly_ga_quarter_tracking = Table({
   name: "x_snc_quarterly_ga_quarter_tracking",
   label: "Quarter Tracking",
@@ -25,43 +30,30 @@ export const x_snc_quarterly_ga_quarter_tracking = Table({
     gap_carryover: DecimalColumn({
       label: "Gap Carryover",
       default: 0,
-      read_only: true,
     }),
     new_target: DecimalColumn({
       label: "New Target",
-      read_only: true,
     }),
     total_pillar_build: DecimalColumn({
       label: "Total Pillar BUILD",
       default: 0,
-      read_only: true,
     }),
     pct_build_to_new_target: FloatColumn({
       label: "% BUILD to New Target",
-      read_only: true,
       scale: 2,
     }),
     build_to_target_gap: DecimalColumn({
       label: "Build to Target Gap",
-      read_only: true,
     }),
     total_pillar_upside: DecimalColumn({
       label: "Total Pillar UPSIDE",
       default: 0,
-      read_only: true,
-    }),
-    total_upside: DecimalColumn({
-      label: "Total UPSIDE",
-      default: 0,
-      read_only: true,
     }),
     variance_to_gap: DecimalColumn({
       label: "Variance to Gap",
-      read_only: true,
     }),
     target_coverage_pct: FloatColumn({
       label: "% Target Coverage",
-      read_only: true,
       scale: 2,
     }),
     notes: StringColumn({

@@ -6,9 +6,15 @@ import {
   DecimalColumn,
 } from "@servicenow/sdk/core";
 
-// Add cross-scope columns to the existing CRM Sales Opportunity table
+// Add cross-scope columns to the existing CRM Sales Opportunity table.
+// `actions` is required so the deployed dictionary record permits cross-scope
+// writes from this scope — without it, update_access is emitted as false and
+// the assign-quarter BR is rejected at runtime regardless of caller_access.
 export const sn_opty_mgmt_core_opportunity = Table({
   name: "sn_opty_mgmt_core_opportunity" as any,
+  actions: ["create", "read", "update", "delete"],
+  accessibleFrom: "public",
+  allowWebServiceAccess: true,
   schema: {
     x_snc_quarterly_ga_quarter: ReferenceColumn({
       label: "Quarter",
