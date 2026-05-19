@@ -266,6 +266,14 @@ declare global {
                         table: 'sys_app_module'
                         id: 'd1a1f3fc64f14ee290ebc94a6c6b0b7e'
                     }
+                    opty_import_data_source: {
+                        table: 'sys_data_source'
+                        id: 'a505f9b39726489eb1754ab6b40a07f4'
+                    }
+                    opty_import_transform: {
+                        table: 'sys_transform_map'
+                        id: 'afbb2ae1eda04dc7a431bf0502b09207'
+                    }
                     overview_heading: {
                         table: 'par_dashboard_widget'
                         id: '0de912c0392446eda370e628a8b29446'
@@ -423,6 +431,14 @@ declare global {
                 }
                 composite: [
                     {
+                        table: 'sys_transform_entry'
+                        id: '025d9c3d90be43d1b53f546b4efe4fc0'
+                        key: {
+                            map: 'afbb2ae1eda04dc7a431bf0502b09207'
+                            target_field: 'estimated_closed_date'
+                        }
+                    },
+                    {
                         table: 'sys_user_role'
                         id: '0634bc3b830e47c7b96df2069744f066'
                         key: {
@@ -435,6 +451,14 @@ declare global {
                         key: {
                             name: 'x_snc_quarterly_ga_quarter_tracking'
                             element: 'total_pillar_build'
+                        }
+                    },
+                    {
+                        table: 'sys_transform_entry'
+                        id: '0de696cd0d35453098ba6d175c71d3f1'
+                        key: {
+                            map: 'afbb2ae1eda04dc7a431bf0502b09207'
+                            target_field: 'x_snc_quarterly_ga_is_pillar'
                         }
                     },
                     {
@@ -479,6 +503,22 @@ declare global {
                     },
                     {
                         table: 'sys_dictionary'
+                        id: '1868d15f2c1a4e46864bb3324a7554b3'
+                        key: {
+                            name: 'x_snc_quarterly_ga_opty_import'
+                            element: 'u_opportunity_id'
+                        }
+                    },
+                    {
+                        table: 'sys_transform_entry'
+                        id: '1bedde23dc1f47d98bffb7bf7c706cc8'
+                        key: {
+                            map: 'afbb2ae1eda04dc7a431bf0502b09207'
+                            target_field: 'account'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
                         id: '23dfd6e2653c495e8854e505d21e21e4'
                         key: {
                             name: 'x_snc_quarterly_ga_quarter_tracking'
@@ -504,12 +544,37 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_transform_entry'
+                        id: '27aa11c81b684331be2c5b5a2f62107c'
+                        key: {
+                            map: 'afbb2ae1eda04dc7a431bf0502b09207'
+                            target_field: 'x_snc_quarterly_ga_nnacv'
+                        }
+                    },
+                    {
+                        table: 'sys_transform_entry'
+                        id: '27d7c546d8874b488b9c889d79029f45'
+                        key: {
+                            map: 'afbb2ae1eda04dc7a431bf0502b09207'
+                            target_field: 'forecast_category'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '292187d73995476b9792fbf2ec8a5141'
                         key: {
                             name: 'x_snc_quarterly_ga_quarter'
                             element: 'quarter_number'
                             value: 'q4'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '2b8937369cc2447193b03b2da9ba529f'
+                        key: {
+                            name: 'x_snc_quarterly_ga_opty_import'
+                            element: 'u_account'
+                            language: 'en'
                         }
                     },
                     {
@@ -526,6 +591,23 @@ declare global {
                             name: 'sn_opty_mgmt_core_opportunity'
                             element: 'x_snc_quarterly_ga_risk'
                             value: 'low'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '3788a42c0c354d2c84b282676ae3cbda'
+                        key: {
+                            name: 'x_snc_quarterly_ga_opty_import'
+                            element: 'u_is_pillar_upside'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_transform_entry'
+                        id: '3973caf125e1419db31fbb9e64899375'
+                        key: {
+                            map: 'afbb2ae1eda04dc7a431bf0502b09207'
+                            target_field: 'number'
                         }
                     },
                     {
@@ -582,6 +664,14 @@ declare global {
                     },
                     {
                         table: 'sys_dictionary'
+                        id: '508166882ada4f3d83342c2bcdc8bffe'
+                        key: {
+                            name: 'x_snc_quarterly_ga_opty_import'
+                            element: 'u_account'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
                         id: '533b3b69e6ec496bac8f7e341a1e69dc'
                         key: {
                             name: 'x_snc_quarterly_ga_quarter_tracking'
@@ -590,10 +680,26 @@ declare global {
                     },
                     {
                         table: 'sys_dictionary'
+                        id: '57d8eec9988c4406967bf4a98f0420ab'
+                        key: {
+                            name: 'x_snc_quarterly_ga_opty_import'
+                            element: 'u_is_pillar_upside'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
                         id: '588ac6aa79444d3184e7b8167257a5da'
                         key: {
                             name: 'x_snc_quarterly_ga_quarter_tracking'
                             element: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '595c1bbf94a6485da55c2c2fceee70c3'
+                        key: {
+                            name: 'x_snc_quarterly_ga_opty_import'
+                            element: 'u_forecast_category'
                         }
                     },
                     {
@@ -652,6 +758,13 @@ declare global {
                             name: 'sn_opty_mgmt_core_opportunity'
                             element: 'x_snc_quarterly_ga_is_pillar_build'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_db_object'
+                        id: '649db3f0fad44cf8a22a1d7ec14f23bd'
+                        key: {
+                            name: 'x_snc_quarterly_ga_opty_import'
                         }
                     },
                     {
@@ -732,11 +845,28 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '70aa0cde5dde4a5a888ad350c9b535e9'
+                        key: {
+                            name: 'x_snc_quarterly_ga_opty_import'
+                            element: 'u_opportunity_id'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '74f8cc57eba748e69210424ac337b1b4'
                         key: {
                             name: 'sn_opty_mgmt_core_opportunity'
                             element: 'x_snc_quarterly_ga_is_pillar'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '751c6a66e3ce4893a6e3a66208dce652'
+                        key: {
+                            name: 'x_snc_quarterly_ga_opty_import'
+                            element: 'u_estimated_closed_date'
                         }
                     },
                     {
@@ -765,10 +895,28 @@ declare global {
                     },
                     {
                         table: 'sys_documentation'
+                        id: '7e6c82571c7f4aa99152c49041d3437b'
+                        key: {
+                            name: 'x_snc_quarterly_ga_opty_import'
+                            element: 'u_forecast_category'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
                         id: '81e80adb58534aed80b5843a832f4fd7'
                         key: {
                             name: 'x_snc_quarterly_ga_quarter_tracking'
                             element: 'target_coverage_pct'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '8ae6c47afe5d4d38ad8d444851592521'
+                        key: {
+                            name: 'x_snc_quarterly_ga_opty_import'
+                            element: 'NULL'
                             language: 'en'
                         }
                     },
@@ -823,6 +971,22 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_transform_entry'
+                        id: '99385d1d9b424dc699f9a06fb4bf0b41'
+                        key: {
+                            map: 'afbb2ae1eda04dc7a431bf0502b09207'
+                            target_field: 'short_description'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '9939316700de48b9bc5ebb4329e710fb'
+                        key: {
+                            name: 'x_snc_quarterly_ga_opty_import'
+                            element: 'u_opportunity_description'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '9a0af7d79f424789951c3603126b9e6f'
                         key: {
@@ -837,6 +1001,15 @@ declare global {
                         key: {
                             name: 'x_snc_quarterly_ga_quarter_tracking'
                             element: 'target'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '9d5a5795ca4c4a64b83dc92bdaa5b9a0'
+                        key: {
+                            name: 'x_snc_quarterly_ga_opty_import'
+                            element: 'u_opportunity_description'
                             language: 'en'
                         }
                     },
@@ -918,6 +1091,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: 'b6c13e87a61d4b1b8a833fb82962e6ab'
+                        key: {
+                            name: 'x_snc_quarterly_ga_opty_import'
+                            element: 'u_estimated_closed_date'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_choice_set'
                         id: 'bb987aa0ba014db8bdd291c0f25432b2'
                         key: {
@@ -985,6 +1167,15 @@ declare global {
                     },
                     {
                         table: 'sys_documentation'
+                        id: 'd659629ae4c04cd391db74a54af562ed'
+                        key: {
+                            name: 'x_snc_quarterly_ga_opty_import'
+                            element: 'u_sales_rep'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
                         id: 'd8509874d9164d92b15f81ae20df2e59'
                         key: {
                             name: 'x_snc_quarterly_ga_quarter_tracking'
@@ -998,6 +1189,14 @@ declare global {
                         key: {
                             name: 'x_snc_quarterly_ga_quarter_tracking'
                             element: 'build_to_target_gap'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'da4c275cc7874341bf256a40ee45d6f1'
+                        key: {
+                            name: 'x_snc_quarterly_ga_opty_import'
+                            element: 'u_sales_rep'
                         }
                     },
                     {
@@ -1038,6 +1237,23 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: 'e6145a6b3e864de3980631042888ea22'
+                        key: {
+                            name: 'x_snc_quarterly_ga_opty_import'
+                            element: 'u_nnacv'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_transform_entry'
+                        id: 'e619a7123cfc417694877ebe2e9413d6'
+                        key: {
+                            map: 'afbb2ae1eda04dc7a431bf0502b09207'
+                            target_field: 'assigned_to'
+                        }
+                    },
+                    {
                         table: 'par_dashboard_canvas'
                         id: 'e848650ae50c4104a7b7cd29cb86f405'
                         key: {
@@ -1060,6 +1276,14 @@ declare global {
                             name: 'sn_opty_mgmt_core_opportunity'
                             element: 'x_snc_quarterly_ga_is_pillar'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'ecf2f3a1936c43149e611d1d39716fec'
+                        key: {
+                            name: 'x_snc_quarterly_ga_opty_import'
+                            element: 'NULL'
                         }
                     },
                     {
@@ -1095,6 +1319,21 @@ declare global {
                             name: 'x_snc_quarterly_ga_quarter_tracking'
                             element: 'pct_build_to_new_target'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'ua_table_licensing_config'
+                        id: 'fa5270f95c074f9c93f37495acd63f62'
+                        key: {
+                            name: 'x_snc_quarterly_ga_opty_import'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'fdb8e4120a5b4655a4540e9dc8a0926e'
+                        key: {
+                            name: 'x_snc_quarterly_ga_opty_import'
+                            element: 'u_nnacv'
                         }
                     },
                 ]
