@@ -71,9 +71,9 @@ export const gapAnalysisListConfig = UxListMenuConfig({
           title: "All Opportunities",
           order: 10,
           condition: "",
-          table: "sn_opty_mgmt_core_opportunity",
+          table: "x_snc_quarterly_ga_opportunity",
           columns:
-            "number,short_description,account,stage,forecast_category,x_snc_quarterly_ga_nnacv,x_snc_quarterly_ga_is_pillar,x_snc_quarterly_ga_risk,x_snc_quarterly_ga_quarter",
+            "number,external_opty_id,short_description,account,partner_name,assigned_to,forecast_category,nnacv,renewal_amount,is_pillar,risk,quarter,estimated_closed_date",
           applicabilities: [
             {
               $id: Now.ID["opportunities_all_applicability"],
@@ -85,11 +85,10 @@ export const gapAnalysisListConfig = UxListMenuConfig({
           $id: Now.ID["opportunities_high_risk_list"],
           title: "High Risk",
           order: 20,
-          condition:
-            "x_snc_quarterly_ga_risk=high^ORx_snc_quarterly_ga_risk=critical^EQ",
-          table: "sn_opty_mgmt_core_opportunity",
+          condition: "risk=high^ORrisk=critical^EQ",
+          table: "x_snc_quarterly_ga_opportunity",
           columns:
-            "number,short_description,account,stage,forecast_category,x_snc_quarterly_ga_nnacv,x_snc_quarterly_ga_is_pillar,x_snc_quarterly_ga_risk,x_snc_quarterly_ga_quarter",
+            "number,external_opty_id,short_description,account,partner_name,assigned_to,forecast_category,nnacv,renewal_amount,is_pillar,risk,quarter,estimated_closed_date",
           applicabilities: [
             {
               $id: Now.ID["opportunities_high_risk_applicability"],
@@ -103,9 +102,9 @@ export const gapAnalysisListConfig = UxListMenuConfig({
           order: 30,
           condition:
             "assigned_toDYNAMIC90d1921e5f510100a9ad2572f2b477fe^EQ",
-          table: "sn_opty_mgmt_core_opportunity",
+          table: "x_snc_quarterly_ga_opportunity",
           columns:
-            "number,short_description,account,stage,forecast_category,x_snc_quarterly_ga_nnacv,x_snc_quarterly_ga_is_pillar,x_snc_quarterly_ga_risk,x_snc_quarterly_ga_quarter",
+            "number,external_opty_id,short_description,account,partner_name,assigned_to,forecast_category,nnacv,renewal_amount,is_pillar,risk,quarter,estimated_closed_date",
           applicabilities: [
             {
               $id: Now.ID["opportunities_by_owner_applicability"],

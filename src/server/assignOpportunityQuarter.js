@@ -5,7 +5,7 @@ import {
 } from "./quarterUtils.js";
 
 var DATE_FIELD = "estimated_closed_date";
-var QUARTER_REF_FIELD = "x_snc_quarterly_ga_quarter";
+var QUARTER_REF_FIELD = "quarter";
 var LOG_SOURCE = "assignOpportunityQuarter";
 
 export function assignOpportunityQuarter(current) {

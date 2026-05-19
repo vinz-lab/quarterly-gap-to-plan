@@ -9,9 +9,6 @@ import {
 // ============================================================
 // 1. Staging table — extends sys_import_set_row
 // ============================================================
-// One column per spreadsheet field. All stored as strings so the staging
-// table can hold raw input verbatim; type conversion happens in the
-// transform map.
 export const x_snc_quarterly_ga_opty_import = Table({
   $id: Now.ID["opty_import_staging_table"],
   name: "x_snc_quarterly_ga_opty_import",
@@ -20,7 +17,7 @@ export const x_snc_quarterly_ga_opty_import = Table({
   schema: {
     u_account: StringColumn({
       label: "Account",
-      maxLength: 100,
+      maxLength: 200,
     }),
     u_opportunity_id: StringColumn({
       label: "Opportunity ID",
@@ -50,6 +47,18 @@ export const x_snc_quarterly_ga_opty_import = Table({
       label: "Pillar UPSIDE",
       maxLength: 10,
     }),
+    u_external_opty_id: StringColumn({
+      label: "External Opportunity ID",
+      maxLength: 100,
+    }),
+    u_partner_name: StringColumn({
+      label: "Partner Name",
+      maxLength: 200,
+    }),
+    u_renewal_amount: StringColumn({
+      label: "Renewal Amount",
+      maxLength: 40,
+    }),
   },
 });
 
@@ -74,14 +83,17 @@ export const opportunityImportDataSource = Record({
 });
 
 // ============================================================
-// 3. Transform Map — staging → sn_opty_mgmt_core_opportunity
+// 3. Transform Map — staging → x_snc_quarterly_ga_opportunity
 // ============================================================
-// Coalesce on `number` makes the load an upsert: re-running the same
-// spreadsheet updates existing opportunities; new rows insert.
+// Coalesces on `number` for upsert. `account` is resolved against the local
+// Account table by name; missing accounts cause row rejection. Forecast
+// category is a choice column on our new opportunity table, so the source
+// string maps directly to a choice value (closed / commit / expect /
+// submitted / upside / pipeline / omitted) — no reference lookup needed.
 export const opportunityImportTransform = ImportSet({
   $id: Now.ID["opty_import_transform"],
   name: "Opportunity Import Transform",
-  targetTable: "sn_opty_mgmt_core_opportunity" as any,
+  targetTable: "x_snc_quarterly_ga_opportunity",
   sourceTable: "x_snc_quarterly_ga_opty_import",
   active: true,
   runBusinessRules: true,
@@ -91,36 +103,28 @@ export const opportunityImportTransform = ImportSet({
     number: {
       sourceField: "u_opportunity_id",
       coalesce: true,
-      coalesceCaseSensitive: false,
     },
     account: {
       sourceField: "u_account",
       referenceValueField: "name",
-      choiceAction: "reject",
     },
     short_description: "u_opportunity_description",
     assigned_to: {
       sourceField: "u_sales_rep",
       referenceValueField: "email",
-      choiceAction: "reject",
     },
-    x_snc_quarterly_ga_nnacv: "u_nnacv",
+    nnacv: "u_nnacv",
     estimated_closed_date: {
       sourceField: "u_estimated_closed_date",
       dateFormat: "yyyy-MM-dd",
     },
-    forecast_category: {
-      sourceField: "u_forecast_category",
-      referenceValueField: "name",
-      choiceAction: "reject",
-    },
-    x_snc_quarterly_ga_is_pillar: {
-      sourceField: "u_is_pillar_upside",
-      useSourceScript: true,
-      sourceScript: `answer = (function (s) {
-  var v = String(s.u_is_pillar_upside || '').trim().toLowerCase();
-  return v === 'true' || v === 'yes' || v === '1' || v === 'y';
-})(source);`,
-    },
+    // CSV values must match the choice column values exactly (lowercase):
+    // closed / commit / expect / submitted / upside / pipeline / omitted
+    forecast_category: "u_forecast_category",
+    // Platform coerces "true" / "false" (case-insensitive) to boolean.
+    is_pillar: "u_is_pillar_upside",
+    external_opty_id: "u_external_opty_id",
+    partner_name: "u_partner_name",
+    renewal_amount: "u_renewal_amount",
   },
 });

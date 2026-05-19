@@ -34,7 +34,7 @@ Dashboard({
               {
                 label: "Opportunity",
                 sourceType: "table",
-                tableOrViewName: "sn_opty_mgmt_core_opportunity",
+                tableOrViewName: "x_snc_quarterly_ga_opportunity",
                 filterQuery: "",
                 id: "ds_opty_total",
               },
@@ -64,7 +64,7 @@ Dashboard({
               {
                 label: "Opportunity",
                 sourceType: "table",
-                tableOrViewName: "sn_opty_mgmt_core_opportunity",
+                tableOrViewName: "x_snc_quarterly_ga_opportunity",
                 filterQuery: "",
                 id: "ds_opty_amount",
               },
@@ -75,7 +75,7 @@ Dashboard({
                 dataSource: "ds_opty_amount",
                 id: "metric_total_amount",
                 aggregateFunction: "SUM",
-                aggregateField: "deal_size",
+                aggregateField: "nnacv",
                 axisId: "primary",
               },
             ],
@@ -95,9 +95,9 @@ Dashboard({
               {
                 label: "Opportunity",
                 sourceType: "table",
-                tableOrViewName: "sn_opty_mgmt_core_opportunity",
+                tableOrViewName: "x_snc_quarterly_ga_opportunity",
                 filterQuery:
-                  "x_snc_quarterly_ga_risk=high^ORx_snc_quarterly_ga_risk=critical",
+                  "risk=high^ORrisk=critical",
                 id: "ds_opty_high_risk",
               },
             ],
@@ -126,7 +126,7 @@ Dashboard({
               {
                 label: "Opportunity",
                 sourceType: "table",
-                tableOrViewName: "sn_opty_mgmt_core_opportunity",
+                tableOrViewName: "x_snc_quarterly_ga_opportunity",
                 filterQuery: "",
                 id: "ds_opty_avg",
               },
@@ -137,7 +137,7 @@ Dashboard({
                 dataSource: "ds_opty_avg",
                 id: "metric_avg_deal",
                 aggregateFunction: "AVG",
-                aggregateField: "deal_size",
+                aggregateField: "nnacv",
                 axisId: "primary",
               },
             ],
@@ -158,7 +158,7 @@ Dashboard({
               {
                 label: "Opportunity",
                 sourceType: "table",
-                tableOrViewName: "sn_opty_mgmt_core_opportunity",
+                tableOrViewName: "x_snc_quarterly_ga_opportunity",
                 filterQuery: "",
                 id: "ds_opty_stage",
               },
@@ -177,7 +177,7 @@ Dashboard({
                 groupBy: [
                   {
                     dataSource: "ds_opty_stage",
-                    groupByField: "stage",
+                    groupByField: "forecast_category",
                   },
                 ],
                 maxNumberOfGroups: 10,
@@ -200,7 +200,7 @@ Dashboard({
               {
                 label: "Opportunity",
                 sourceType: "table",
-                tableOrViewName: "sn_opty_mgmt_core_opportunity",
+                tableOrViewName: "x_snc_quarterly_ga_opportunity",
                 filterQuery: "",
                 id: "ds_opty_risk",
               },
@@ -219,7 +219,7 @@ Dashboard({
                 groupBy: [
                   {
                     dataSource: "ds_opty_risk",
-                    groupByField: "x_snc_quarterly_ga_risk",
+                    groupByField: "risk",
                   },
                 ],
                 maxNumberOfGroups: 5,
@@ -242,7 +242,7 @@ Dashboard({
               {
                 label: "Opportunity",
                 sourceType: "table",
-                tableOrViewName: "sn_opty_mgmt_core_opportunity",
+                tableOrViewName: "x_snc_quarterly_ga_opportunity",
                 filterQuery: "",
                 id: "ds_opty_forecast",
               },
@@ -472,7 +472,7 @@ Dashboard({
               {
                 label: "Opportunity",
                 sourceType: "table",
-                tableOrViewName: "sn_opty_mgmt_core_opportunity",
+                tableOrViewName: "x_snc_quarterly_ga_opportunity",
                 filterQuery: "",
                 id: "ds_opty_trend_creation",
               },
@@ -510,7 +510,7 @@ Dashboard({
               {
                 label: "Opportunity",
                 sourceType: "table",
-                tableOrViewName: "sn_opty_mgmt_core_opportunity",
+                tableOrViewName: "x_snc_quarterly_ga_opportunity",
                 filterQuery: "",
                 id: "ds_opty_trend_amount",
               },
@@ -521,7 +521,7 @@ Dashboard({
                 dataSource: "ds_opty_trend_amount",
                 id: "metric_amount_trend",
                 aggregateFunction: "SUM",
-                aggregateField: "deal_size",
+                aggregateField: "nnacv",
                 axisId: "primary",
               },
             ],
@@ -563,7 +563,7 @@ Dashboard({
               {
                 label: "Opportunity",
                 sourceType: "table",
-                tableOrViewName: "sn_opty_mgmt_core_opportunity",
+                tableOrViewName: "x_snc_quarterly_ga_opportunity",
                 filterQuery: "",
                 id: "ds_opty_stage_trend",
               },
@@ -591,7 +591,7 @@ Dashboard({
                 groupBy: [
                   {
                     dataSource: "ds_opty_stage_trend",
-                    groupByField: "stage",
+                    groupByField: "forecast_category",
                   },
                 ],
                 maxNumberOfGroups: 10,
@@ -613,7 +613,7 @@ Dashboard({
               {
                 label: "Opportunity",
                 sourceType: "table",
-                tableOrViewName: "sn_opty_mgmt_core_opportunity",
+                tableOrViewName: "x_snc_quarterly_ga_opportunity",
                 filterQuery: "",
                 id: "ds_opty_risk_trend",
               },
@@ -641,7 +641,7 @@ Dashboard({
                 groupBy: [
                   {
                     dataSource: "ds_opty_risk_trend",
-                    groupByField: "x_snc_quarterly_ga_risk",
+                    groupByField: "risk",
                   },
                 ],
                 maxNumberOfGroups: 5,

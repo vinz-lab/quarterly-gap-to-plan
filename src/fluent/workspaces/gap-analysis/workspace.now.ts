@@ -9,7 +9,8 @@ export const gapAnalysisWorkspace = Workspace({
   tables: [
     "x_snc_quarterly_ga_quarter",
     "x_snc_quarterly_ga_quarter_tracking",
-    "sn_opty_mgmt_core_opportunity",
+    "x_snc_quarterly_ga_opportunity",
+    "x_snc_quarterly_ga_account",
   ],
   listConfig: gapAnalysisListConfig,
 });

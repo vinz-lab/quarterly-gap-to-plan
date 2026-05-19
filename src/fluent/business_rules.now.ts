@@ -2,23 +2,24 @@ import { BusinessRule } from "@servicenow/sdk/core";
 import { assignOpportunityQuarter } from "../server/assignOpportunityQuarter.js";
 
 // ============================================================
-// INLINE SHARED LOGIC
+// INLINE CALCULATION LOGIC (shared by both BRs below)
 // ============================================================
-// The two BRs below use string-form scripts (not module imports) because
-// module-loaded BR scripts have been silently failing on this instance.
-// Inlining the calculation guarantees the math runs.
+// Both BRs use string-form scripts (not module imports) so module-loading
+// issues never silently break the math.
 
 const REFRESH_TRACKING_FOR_QUARTER = `
 function pad2(n) { return n < 10 ? '0' + n : '' + n; }
+
 var QUARTER_RANGES = {
   q1: { startMonth: 1, startDay: 1, endMonth: 3, endDay: 31 },
   q2: { startMonth: 4, startDay: 1, endMonth: 6, endDay: 30 },
   q3: { startMonth: 7, startDay: 1, endMonth: 9, endDay: 30 },
   q4: { startMonth: 10, startDay: 1, endMonth: 12, endDay: 31 }
 };
-// Names of forecast_category records on the instance (case-insensitive match).
-var BUILD_CATEGORY_NAMES = ['Commit', 'Closed', 'Expect', 'Submitted'];
-var UPSIDE_CATEGORY_NAMES = ['Commit', 'Closed', 'Expect', 'Submitted', 'Upside'];
+
+// forecast_category choice values on x_snc_quarterly_ga_opportunity.
+var BUILD_CATEGORIES = 'closed,commit,expect,submitted';
+var UPSIDE_CATEGORIES = 'closed,commit,expect,submitted,upside';
 
 function dateRange(qn, fy) {
   var r = QUARTER_RANGES[String(qn || '').toLowerCase()];
@@ -37,75 +38,39 @@ function quarterFromDate(dateValue) {
   return { qn: 'q' + (Math.floor((month - 1) / 3) + 1), fy: year };
 }
 
-// Resolve forecast_category sys_ids by exact (case-insensitive) name.
-function categoryRecordsByNames(namesArray) {
-  var ids = [], names = [];
-  var fc = new GlideRecord('sn_sales_forecast_category');
-  var enc = '';
-  for (var i = 0; i < namesArray.length; i++) {
-    if (i > 0) enc += '^OR';
-    enc += 'name=' + namesArray[i];
-  }
-  fc.addEncodedQuery(enc);
-  fc.query();
-  while (fc.next()) {
-    ids.push(fc.getUniqueValue());
-    names.push(fc.getValue('name'));
-  }
-  return { ids: ids.join(','), names: names.join('|') };
-}
-
-// Iterate opportunities via GlideRecord and sum NNACV explicitly in JS.
-// More verbose than GlideAggregate but logs every contributing opportunity,
-// avoiding any IN-list aggregation quirks.
+// Sum NNACV across matching opportunities — explicit GlideRecord iteration
+// so every contributing row is logged and the SUM is unambiguous.
 function sumNnacv(label, range, filterFn) {
-  var gr = new GlideRecord('sn_opty_mgmt_core_opportunity');
+  var gr = new GlideRecord('x_snc_quarterly_ga_opportunity');
   gr.addQuery('estimated_closed_date', '>=', range.start);
   gr.addQuery('estimated_closed_date', '<=', range.endInclusive);
   if (filterFn) filterFn(gr);
   gr.query();
   var sum = 0, count = 0;
   while (gr.next()) {
-    var v = parseFloat(gr.getValue('x_snc_quarterly_ga_nnacv')) || 0;
+    var v = parseFloat(gr.getValue('nnacv')) || 0;
     sum += v;
     count++;
     gs.info('  ' + label + ' opty=' + gr.getValue('number') +
       ' fc=' + gr.getValue('forecast_category') +
-      ' pillar=' + gr.getValue('x_snc_quarterly_ga_is_pillar') +
+      ' pillar=' + gr.getValue('is_pillar') +
       ' nnacv=' + v + ' date=' + gr.getValue('estimated_closed_date'));
   }
   gs.info('  ' + label + ' TOTAL sum=' + sum + ' count=' + count);
   return sum;
 }
 
-// Build an OR-encoded query of forecast_category = <sys_id> across all matched
-// category ids. Using addEncodedQuery (not addQuery IN) eliminates ambiguity
-// in how IN-with-CSV is parsed against reference fields.
-function applyCategoryFilter(gr, idsCsv) {
-  if (!idsCsv) return;
-  var parts = idsCsv.split(',');
-  var enc = '';
-  for (var i = 0; i < parts.length; i++) {
-    if (i > 0) enc += '^OR';
-    enc += 'forecast_category=' + parts[i];
-  }
-  gr.addEncodedQuery(enc);
-}
-
 function aggregateForQuarter(qn, fy) {
   var range = dateRange(qn, fy);
   if (!range) return null;
-  var build = categoryRecordsByNames(BUILD_CATEGORY_NAMES);
-  var upside = categoryRecordsByNames(UPSIDE_CATEGORY_NAMES);
-  gs.info('aggregate ' + qn + '/' + fy + ' range=' + range.start + '..' + range.endInclusive +
-    ' buildCats=[' + build.names + '] upsideCats=[' + upside.names + ']');
-  var pillarBuild = build.ids ? sumNnacv('BUILD', range, function (gr) {
-    applyCategoryFilter(gr, build.ids);
-    gr.addQuery('x_snc_quarterly_ga_is_pillar', true);
-  }) : 0;
-  var pillarUpside = upside.ids ? sumNnacv('UPSIDE', range, function (gr) {
-    applyCategoryFilter(gr, upside.ids);
-  }) : 0;
+  gs.info('aggregate ' + qn + '/' + fy + ' range=' + range.start + '..' + range.endInclusive);
+  var pillarBuild = sumNnacv('BUILD', range, function (gr) {
+    gr.addQuery('forecast_category', 'IN', BUILD_CATEGORIES);
+    gr.addQuery('is_pillar', true);
+  });
+  var pillarUpside = sumNnacv('UPSIDE', range, function (gr) {
+    gr.addQuery('forecast_category', 'IN', UPSIDE_CATEGORIES);
+  });
   gs.info('aggregate ' + qn + '/' + fy + ' pillarBuild=' + pillarBuild + ' pillarUpside=' + pillarUpside);
   return {
     pillarBuild: pillarBuild,
@@ -134,8 +99,9 @@ function applyMetrics(trackingGr, metrics) {
 }
 `;
 
-// BR script: on opportunity insert/update/delete, find the affected quarter(s)
-// and recompute the matching tracking record(s).
+// Sync BR: on opportunity insert/update/delete, recompute the matching
+// tracking record's metrics. Quarter membership is derived from the
+// opportunity's estimated_closed_date.
 const SYNC_OPTY_SCRIPT = `
 ${REFRESH_TRACKING_FOR_QUARTER}
 
@@ -197,8 +163,7 @@ ${REFRESH_TRACKING_FOR_QUARTER}
 })(current, previous);
 `;
 
-// BR script: on tracking insert/update, re-aggregate the same quarter's opportunities
-// so the user editing target/notes also gets fresh BUILD/UPSIDE numbers.
+// Calculate BR: on tracking save, re-aggregate this tracking record's quarter.
 const CALC_TRACKING_SCRIPT = `
 ${REFRESH_TRACKING_FOR_QUARTER}
 
@@ -247,32 +212,32 @@ export const calculateQuarterMetrics = BusinessRule({
   order: 100,
   active: true,
   description:
-    "Re-aggregates BUILD/UPSIDE from opportunities and writes the derived tracking fields. Runs on every tracking insert/update (including programmatic .update() from the sync BR and the Recalculate UI Actions).",
+    "Re-aggregates BUILD/UPSIDE from x_snc_quarterly_ga_opportunity and writes derived tracking fields on every tracking insert/update.",
   script: CALC_TRACKING_SCRIPT,
 });
 
 export const syncOptyToTracking = BusinessRule({
   $id: Now.ID["sync_opty_to_tracking_br"],
   name: "Sync Quarter Tracking From Opportunity",
-  table: "sn_opty_mgmt_core_opportunity" as any,
+  table: "x_snc_quarterly_ga_opportunity",
   when: "after",
   action: ["insert", "update", "delete"],
   order: 100,
   active: true,
   description:
-    "On every opportunity insert/update/delete, derives the affected quarter(s) from estimated_closed_date, aggregates BUILD/Pillar UPSIDE/Total UPSIDE, and writes all derived metrics to the matching Quarter Tracking record.",
+    "On every opportunity insert/update/delete, derives the affected quarter from estimated_closed_date, aggregates BUILD/Pillar UPSIDE, and writes the metrics to the matching Quarter Tracking record.",
   script: SYNC_OPTY_SCRIPT,
 });
 
 export const assignOptyQuarter = BusinessRule({
   $id: Now.ID["assign_opty_quarter_br"],
   name: "Assign Opportunity Quarter From Estimated Close Date",
-  table: "sn_opty_mgmt_core_opportunity" as any,
+  table: "x_snc_quarterly_ga_opportunity",
   when: "before",
   action: ["insert", "update"],
   order: 100,
   active: true,
   description:
-    "Derives the calendar quarter from estimated_closed_date and sets the Quarter reference. Tolerant of quarter_number / fiscal_year casing variants. No-ops on empty date or no matching Quarter.",
+    "Derives the calendar quarter from estimated_closed_date and sets the Quarter reference on the opportunity.",
   script: assignOpportunityQuarter,
 });

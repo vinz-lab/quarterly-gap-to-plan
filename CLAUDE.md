@@ -30,8 +30,10 @@ To work with SDK semantics (metadata conventions, API types, available skills), 
 
 **Data model** (all under the `x_snc_quarterly_ga` scope):
 - `x_snc_quarterly_ga_quarter` — fiscal quarter (Q1–Q4, fiscal year, active flag).
-- `x_snc_quarterly_ga_quarter_tracking` — per-quarter financial metrics. Read-only fields (`new_target`, `pct_build_to_new_target`, `build_to_target_gap`, `variance_to_gap`) are computed by the BR; user-entered fields are `target`, `gap_carryover`, `total_pillar_build`, `total_pillar_upside`, `notes`.
-- `sn_opty_mgmt_core_opportunity` — **cross-scope extension** of the platform CRM Opportunity table, adding `x_snc_quarterly_ga_quarter` (reference) and `x_snc_quarterly_ga_risk` (choice). Defined in `opportunity_extensions.now.ts` with `name: "sn_opty_mgmt_core_opportunity" as any` because it's not a table this scope owns.
+- `x_snc_quarterly_ga_quarter_tracking` — per-quarter financial metrics. Derived fields (`new_target`, `total_pillar_build`, `total_pillar_upside`, `pct_build_to_new_target`, `target_coverage_pct`, `build_to_target_gap`, `variance_to_gap`) are computed by BRs; user-entered fields are `target`, `gap_carryover`, `notes`.
+- `x_snc_quarterly_ga_account` — local account table (just `name` + `active`). Referenced by Opportunity. Avoids dependency on the platform CRM `customer_account`.
+- `x_snc_quarterly_ga_opportunity` — local opportunity table. Fields: `number` (OPTY-prefixed auto-number), `account` (ref to local Account), `short_description`, `assigned_to` (ref to sys_user), `nnacv`, `estimated_closed_date`, `forecast_category` (choice: closed/commit/expect/submitted/upside/pipeline/omitted), `is_pillar` (Pillar UPSIDE flag), `risk` (choice), `quarter` (ref to Quarter, auto-set by BR). **No longer extends `sn_opty_mgmt_core_opportunity`** — the previous cross-scope extension hit policy walls and was removed.
+- `x_snc_quarterly_ga_opty_import` — import-set staging table extending `sys_import_set_row`. Holds raw CSV/Excel rows before the Transform Map writes them to `x_snc_quarterly_ga_opportunity`.
 
 **UI surfaces** (separate, not interchangeable):
 - Classic platform navigation (`navigation.now.ts`) — `ApplicationMenu` + `sys_app_module` records for the legacy nav.
